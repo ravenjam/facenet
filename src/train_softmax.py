@@ -88,6 +88,7 @@ def main(args):
         tf.set_random_seed(args.seed)
         global_step = tf.Variable(0, trainable=False)
         
+        print('train_set: ', train_set)
         # Get a list of image paths and their labels
         image_list, label_list = facenet.get_image_paths_and_labels(train_set)
         assert len(image_list)>0, 'The dataset should not be empty'
@@ -236,6 +237,7 @@ def find_threshold(var, percentile):
     return threshold
   
 def filter_dataset(dataset, data_filename, percentile, min_nrof_images_per_class):
+    print('data_filename: ', data_filename)
     with h5py.File(data_filename,'r') as f:
         distance_to_center = np.array(f.get('distance_to_center'))
         label_list = np.array(f.get('label_list'))

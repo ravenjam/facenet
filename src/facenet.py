@@ -335,6 +335,7 @@ def get_dataset(paths, has_class_directories=True):
             image_paths = get_image_paths(facedir)
             dataset.append(ImageClass(class_name, image_paths))
   
+    print('dataset:', len(dataset))
     return dataset
 
 def get_image_paths(facedir):
@@ -389,6 +390,7 @@ def load_model(model):
         saver.restore(tf.get_default_session(), os.path.join(model_exp, ckpt_file))
     
 def get_model_filenames(model_dir):
+    print('model_dir: ', model_dir)
     files = os.listdir(model_dir)
     meta_files = [s for s in files if s.endswith('.meta')]
     if len(meta_files)==0:
@@ -538,6 +540,7 @@ def put_images_on_grid(images, shape=(16,8)):
     return img
 
 def write_arguments_to_file(args, filename):
+    print ('args: ', args)
     with open(filename, 'w') as f:
-        for key, value in vars(args).iteritems():
+        for key, value in vars(args).items():
             f.write('%s: %s\n' % (key, str(value)))

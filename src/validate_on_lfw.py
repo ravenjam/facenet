@@ -48,6 +48,7 @@ def main(args):
         with tf.Session() as sess:
             
             # Read the file containing the pairs used for testing
+            print('args.lfw_pairs: ', args.lfw_pairs)
             pairs = lfw.read_pairs(os.path.expanduser(args.lfw_pairs))
 
             # Get the paths for the corresponding images

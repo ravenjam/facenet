@@ -68,12 +68,15 @@ def main(args):
         if args.random_order:
             random.shuffle(dataset)
         for cls in dataset:
+            print('cls', cls)
             output_class_dir = os.path.join(output_dir, cls.name)
+            print('output_class_dir', output_class_dir)
             if not os.path.exists(output_class_dir):
                 os.makedirs(output_class_dir)
                 if args.random_order:
                     random.shuffle(cls.image_paths)
             for image_path in cls.image_paths:
+                print('image_path:', image_path)
                 nrof_images_total += 1
                 filename = os.path.splitext(os.path.split(image_path)[1])[0]
                 output_filename = os.path.join(output_class_dir, filename+'.png')
